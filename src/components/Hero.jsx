@@ -10,13 +10,13 @@ export default function Hero() {
       </SplineContainer>
       <ContentOverlay>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="text-content"
         >
           <Title>
-            I'm VISHNU
+            I'm Vishnu
             <Role>Game Developer</Role>
           </Title>
           <Description>Creating Interactive Worlds, One Line of Code at a Time.</Description>
@@ -53,28 +53,33 @@ const SplineContainer = styled.div`
 const ContentOverlay = styled.div`
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 50px;
+  transform: translateY(-50%);
   width: 100%;
-  max-width: 1200px;
-  text-align: center;
+  max-width: 1000px;
+  text-align: left;
   z-index: 2;
   padding: 2rem;
   pointer-events: none;
 
   .text-content {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 100%;
   }
 
   /* Make specific elements clickable */
   a, button {
     pointer-events: all;
   }
+  
+  @media (max-width: 768px) {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 `;
 
 const Title = styled.h1`
-  font-size: 4.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: white;
   margin-bottom: 1rem;
@@ -86,9 +91,9 @@ const Title = styled.h1`
 `;
 
 const Role = styled.div`
-  font-size: 2rem;
-  font-weight: 500;
-  color: #b3b3b3;
+  font-size: 6rem;
+  font-weight: 800;
+  color: white;
   margin-top: 0.5rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   
@@ -100,14 +105,14 @@ const Role = styled.div`
 const Description = styled.p`
   font-size: 1.2rem;
   color: #e0e0e0;
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 100%;
   margin-bottom: 2rem;
   line-height: 1.6;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   
   @media (max-width: 768px) {
     font-size: 1rem;
+    margin: 0 auto 2rem auto;
   }
 `;
 
@@ -132,8 +137,11 @@ const CTAButton = styled.a`
 const SocialLinks = styled.div`
   display: flex;
   gap: 1.5rem;
-  justify-content: center;
   margin-top: 1rem;
+  
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const SocialLink = styled.a`
