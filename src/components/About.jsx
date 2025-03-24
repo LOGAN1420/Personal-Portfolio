@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import Spline from '@splinetool/react-spline';
 
 export default function About() {
   return (
     <AboutSection id="about">
+      <SplineContainer>
+        <Spline scene="https://prod.spline.design/Y7G5CbvK-Br4qb5I/scene.splinecode" />
+      </SplineContainer>
       <Container>
         <ContentWrapper>
           <motion.div
@@ -14,31 +18,14 @@ export default function About() {
           >
             <SectionTitle>About Me</SectionTitle>
             <Description>
-              I am a passionate full-stack developer with expertise in building modern web applications.
-              My journey in software development started with a curiosity for creating interactive
-              experiences, and it has evolved into a professional pursuit of crafting efficient,
-              scalable, and user-friendly solutions.
+            Hey there! <Highlight>I'm Vishnu</Highlight>, a game developer fueled by <Bold>caffeine and creativity, 
+            crafting immersive and interactive experiences</Bold>.<br/><br/> My journey into game development started with pure 
+            curiosity—<Italic>how do games actually work?</Italic> That curiosity turned into passion, and now, with <Bold>4 years</Bold> of 
+            experience in game development (including <Bold>2.5 years</Bold> of professional work), I bring ideas to life through 
+            code, design, and innovation. <br/><br/>But I don’t just stop at coding—I also dive into <Bold>3D modeling and 2D art</Bold>, 
+            ensuring every project gets the visual polish it deserves. And that’s just the beginning!
+            You can check out more of my skillset in the skills section.
             </Description>
-            <SkillsGrid>
-              <SkillCard>
-                <SkillTitle>Frontend Development</SkillTitle>
-                <SkillDescription>
-                  React, Next.js, TypeScript, and modern CSS frameworks
-                </SkillDescription>
-              </SkillCard>
-              <SkillCard>
-                <SkillTitle>Backend Development</SkillTitle>
-                <SkillDescription>
-                  Node.js, Express, Python, and database management
-                </SkillDescription>
-              </SkillCard>
-              <SkillCard>
-                <SkillTitle>UI/UX Design</SkillTitle>
-                <SkillDescription>
-                  Figma, Adobe XD, and responsive design principles
-                </SkillDescription>
-              </SkillCard>
-            </SkillsGrid>
           </motion.div>
         </ContentWrapper>
       </Container>
@@ -48,22 +35,51 @@ export default function About() {
 
 const AboutSection = styled.section`
   min-height: 100vh;
-  background: #0a0a0a;
+  background: #030303;
   display: flex;
   align-items: center;
   padding: 6rem 0;
+  position: relative;
+`;
+
+const SplineContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: all;
 `;
 
 const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 50%;
+  margin: 0;
+  margin-left: 50px;
   padding: 0 2rem;
   width: 100%;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin: 0 auto;
+  }
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 800px;
+  max-width: 100%;
+  margin: 0;
+  background: rgba(10, 10, 10, 0.8);
+  padding: 2rem;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  @media (max-width: 768px) {
   margin: 0 auto;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -71,7 +87,7 @@ const SectionTitle = styled.h2`
   font-weight: 700;
   color: white;
   margin-bottom: 2rem;
-  text-align: center;
+  text-align: left;
 `;
 
 const Description = styled.p`
@@ -79,36 +95,21 @@ const Description = styled.p`
   line-height: 1.8;
   color: #b3b3b3;
   margin-bottom: 3rem;
-  text-align: center;
+  text-align: left;
 `;
 
-const SkillsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-`;
-
-const SkillCard = styled.div`
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 2rem;
-  transition: transform 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-`;
-
-const SkillTitle = styled.h3`
-  font-size: 1.25rem;
+// Styled components for text formatting
+const Highlight = styled.span`
+  color: #A7FF83;
   font-weight: 600;
-  color: white;
-  margin-bottom: 1rem;
 `;
 
-const SkillDescription = styled.p`
-  color: #b3b3b3;
-  line-height: 1.6;
+const Bold = styled.span`
+  font-weight: 700;
+  color: white;
+`;
+
+const Italic = styled.span`
+  font-style: italic;
+  color: #e0e0e0;
 `;
