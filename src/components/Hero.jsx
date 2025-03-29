@@ -1,13 +1,10 @@
-import Spline from '@splinetool/react-spline';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { IconBrandGithub, IconBrandLinkedin, IconBrandTwitter } from '@tabler/icons-react';
 
 export default function Hero() {
   return (
     <HeroContainer>
-      <SplineContainer>
-        <Spline scene="https://prod.spline.design/7fMGzN0w2kTMdoc0/scene.splinecode" />
-      </SplineContainer>
       <ContentOverlay>
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -22,9 +19,15 @@ export default function Hero() {
           <Description>Creating Interactive Worlds, One Line of Code at a Time.</Description>
           <CTAButton href="#portfolio">View My Work</CTAButton>
           <SocialLinks>
-            <SocialLink href="https://github.com/yourusername" target="_blank">GitHub</SocialLink>
-            <SocialLink href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</SocialLink>
-            <SocialLink href="https://twitter.com/yourusername" target="_blank">Twitter</SocialLink>
+            <SocialLink href="https://github.com/yourusername" target="_blank">
+              <IconBrandGithub size={24} stroke={1.5} />
+            </SocialLink>
+            <SocialLink href="https://linkedin.com/in/yourusername" target="_blank">
+              <IconBrandLinkedin size={24} stroke={1.5} />
+            </SocialLink>
+            <SocialLink href="https://twitter.com/yourusername" target="_blank">
+              <IconBrandTwitter size={24} stroke={1.5} />
+            </SocialLink>
           </SocialLinks>
         </motion.div>
       </ContentOverlay>
@@ -37,27 +40,17 @@ const HeroContainer = styled.div`
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  background: #0a0a0a;
-`;
-
-const SplineContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: all;
+  background: transparent;
 `;
 
 const ContentOverlay = styled.div`
   position: absolute;
   top: 50%;
-  left: 50px;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   max-width: 1000px;
-  text-align: left;
+  text-align: center;
   z-index: 2;
   padding: 2rem;
   pointer-events: none;
@@ -68,7 +61,7 @@ const ContentOverlay = styled.div`
 
   /* Make specific elements clickable */
   a, button {
-    pointer-events: all;
+    pointer-events: auto;
   }
   
   @media (max-width: 768px) {
@@ -83,7 +76,7 @@ const Title = styled.h1`
   font-weight: 700;
   color: white;
   margin-bottom: 1rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 6px 8px rgba(0, 0, 0, 0.8);
   
   @media (max-width: 768px) {
     font-size: 3rem;
@@ -95,7 +88,7 @@ const Role = styled.div`
   font-weight: 800;
   color: white;
   margin-top: 0.5rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 6px 8px rgba(0, 0, 0, 0.8);
   
   @media (max-width: 768px) {
     font-size: 1.5rem;
@@ -103,12 +96,13 @@ const Role = styled.div`
 `;
 
 const Description = styled.p`
-  font-size: 1.2rem;
-  color: #e0e0e0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
   max-width: 100%;
   margin-bottom: 2rem;
   line-height: 1.6;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 6px 8px rgba(0, 0, 0, 0.8);
   
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -119,18 +113,21 @@ const Description = styled.p`
 const CTAButton = styled.a`
   display: inline-block;
   padding: 1rem 2rem;
-  background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
+  background: rgba(0, 0, 0, 0.4);
   color: white;
   text-decoration: none;
   border-radius: 30px;
   font-weight: 600;
   margin-bottom: 2rem;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background 0.3s ease;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   &:hover {
     transform: scale(1.05);
+    background: rgba(0, 0, 0, 0.6);
   }
 `;
 
@@ -138,6 +135,7 @@ const SocialLinks = styled.div`
   display: flex;
   gap: 1.5rem;
   margin-top: 1rem;
+  justify-content: center;
   
   @media (max-width: 768px) {
     justify-content: center;
@@ -147,11 +145,22 @@ const SocialLinks = styled.div`
 const SocialLink = styled.a`
   color: #e0e0e0;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
   font-size: 1rem;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 
   &:hover {
     color: white;
+    transform: translateY(-3px);
+    background: rgba(0, 0, 0, 0.6);
   }
 `;
